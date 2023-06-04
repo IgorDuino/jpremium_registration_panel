@@ -1,39 +1,47 @@
-<!-- templates/signup.html -->
+<!DOCTYPE html>
+<html>
 
-{% extends "base.html" %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <title>CupAtel Minecraft</title>
+</head>
 
-{% block content %}
-<div class="column is-4 is-offset-4">
-    <h3 class="title">Sign Up</h3>
-    <div class="box">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="notification is-danger">
-                {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
-            </div>
-        {% endif %}
-        {% endwith %}
-        <form method="POST" action="/signup">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
-                </div>
-            </div>
-
-            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
-        </form>
+<body>
+    <header>
+        <nav>
+            <a href="/">главная</a>
+            <a href="/register">регистрация</a>
+            <a href="/map">карта</a>
+        </nav>
+    </header>
+    <div class="captcha">
+        <img src="captcha.php" alt="captcha">
+        <input type="text" name="captcha" placeholder="введите код с картинки">
+        <button></button>
     </div>
-</div>
-{% endblock %}
+    <div class="form">
+        <div class="nickname">
+            <p>Ваш ник</p>
+            <input type="text" name="nickname" placeholder="">
+        </div>
+        <div class="license">
+            <p>У меня есть лицензия</p>
+            <input type="checkbox" name="license">
+        </div>
+        <div class="password">
+            <p>Придумайте пароль</p>
+            <input type="password" name="password" placeholder="">
+        </div>
+        <div class="about">
+            <p>Кратко расскажите о себе</p>
+            <textarea name="about" placeholder="откуда вы узнали о сервере / кем вы хотите быть на сервере"></textarea>
+        </div>
+        <button class="send_btn">Добавьте в вайтлист</button>
+    </div>
+    <script src="assets/js/registration.js"></script>
+</body>
+
+</html>
